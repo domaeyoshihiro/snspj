@@ -30,7 +30,14 @@ export default {
     }
   },
   methods: {
-    register() {
+    async register() {
+      try {
+        await this.$axios.post("http://localhost:8000/api/user", {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      });
+
       if (!this.email || !this.password) {
         alert('メールアドレスまたはパスワードが入力されていません。')
         return
