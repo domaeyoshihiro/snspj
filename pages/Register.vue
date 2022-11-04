@@ -31,12 +31,6 @@ export default {
   },
   methods: {
     async register() {
-      try {
-        await this.$axios.post("http://localhost:8000/api/user", {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-      });
 
       if (!this.email || !this.password) {
         alert('メールアドレスまたはパスワードが入力されていません。')
@@ -47,6 +41,12 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
+          await this.$axios.post("http://localhost:8000/api/user", {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+          });
+          
           data.user.sendEmailVerification().then(() => {
             this.$router.replace('/login')
           })
