@@ -1,9 +1,4 @@
 <template>
-  <Tutorial/>
+  <SideNav/>
 </template>
 
-<script>
-export default {
-  name: 'IndexPage'
-}
-</script>
