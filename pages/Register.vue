@@ -40,7 +40,7 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((data) => {
-              this.$axios.post("http://localhost:8000/api/user", {
+          this.$axios.post("http://localhost:8000/api/user", {
             name: this.name,
             email: this.email,
             password: this.password,
