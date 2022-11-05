@@ -26,7 +26,7 @@ export default {
     return {
       name: null,
       email: null,
-      password: null,
+      firebaseId: null,
     }
   },
   methods: {
@@ -43,7 +43,7 @@ export default {
           this.$axios.post("http://localhost:8000/api/user", {
             name: this.name,
             email: this.email,
-            password: this.password,
+            firebaseId: this.firebaseId,
           });
 
           data.user.sendEmailVerification().then(() => {
