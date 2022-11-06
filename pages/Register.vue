@@ -43,7 +43,7 @@ export default {
           this.$axios.post("http://localhost:8000/api/user", {
             name: this.name,
             email: this.email,
-            firebaseid: this.firebaseid,
+            firebaseid: data.user.uid,
           });
 
           data.user.sendEmailVerification().then(() => {

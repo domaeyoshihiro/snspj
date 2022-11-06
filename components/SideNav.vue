@@ -18,9 +18,6 @@
         </validation-provider>
         <button @click="insertPost" class="sidenav-share-btn" :disabled="ObserverProps.invalid || !ObserverProps.validated">シェアする</button>
       </validation-observer>
-
-      
-
     </div>
   </div>
 </template>
