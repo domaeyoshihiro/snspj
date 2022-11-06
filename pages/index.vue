@@ -38,19 +38,19 @@ export default {
 
   methods: {
     async storeLike() {
-      await this.$axios.get("http://127.0.0.1:8000/api/like/")
+      await this.$axios.post("http://127.0.0.1:8000/api/like/")
       .then(res => {
         this.count = res.data.count;
       });
     },
     async destroyLike() {
-      await this.$axios.get("http://127.0.0.1:8000/api/like/")
+      await this.$axios.post("http://127.0.0.1:8000/api/like/")
       .then(res => {
         this.count = res.data.count;
       });
     },
     async countLike() {
-      await this.$axios.get("http://127.0.0.1:8000/api/like/")
+      await this.$axios.post("http://127.0.0.1:8000/api/like/")
       .then(res => {
         this.count = res.data;
       });
