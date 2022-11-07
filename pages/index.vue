@@ -22,13 +22,21 @@
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
-　var unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log(user);
-    }
-    unsubscribe();
+　created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.message = "ログイン済みです。";
+        var uid = user.uid;
+      }
+      else {
+        alert("ログインしてください。");
+        this.$router.replace("/login");
+      }
     });
+  },
 
   data() {
     return {
