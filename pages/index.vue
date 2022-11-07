@@ -23,7 +23,13 @@
 
 <script>
 export default {
-  middleware: 'auth',
+　var unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log(user);
+    }
+    unsubscribe();
+    });
+
   data() {
     return {
       newContent: "",
