@@ -41,17 +41,29 @@ export default {
   data() {
     return {
       newContent: "",
-      userID: "",
+      uid: "",
       postLists: [],
-      count: "",
+      /*count: "",*/
     };
   },
 
+  /*
   mounted () {
     this.countLike();
   },
+  */
 
   methods: {
+    async getPost() {
+      const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
+      this.postLists = resData.data.data;
+    },
+    async deletePost(id) {
+      await this.$axios.delete("http://127.0.0.1:8000/api/post/" + id);
+      this.getContact();
+      }, 
+
+    /*
     async storeLike() {
       await this.$axios.post("http://127.0.0.1:8000/api/like/")
       .then(res => {
@@ -70,15 +82,7 @@ export default {
         this.count = res.data;
       });
     },
-
-    async getPost() {
-      const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
-      this.postLists = resData.data.data;
-    },
-    async deleteContact(id) {
-      await this.$axios.delete("http://127.0.0.1:8000/api/post/" + id);
-      this.getContact();
-      },
+    */
 
     comment() {
       this.$router.push("/posts/id");

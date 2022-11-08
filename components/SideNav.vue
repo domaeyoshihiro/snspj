@@ -24,7 +24,7 @@
 
 <script>
 import firebase from '~/plugins/firebase'
-import { getAuth } from 'firebase/auth'
+import { getAuth } from "firebase/auth";
 
 export default {
   data() {
@@ -44,6 +44,7 @@ export default {
       this.$router.replace('/login')
       })
     },
+
     async getPost() {
       const resData = await this.$axios.get(
       "http://127.0.0.1:8000/api/post/"
@@ -53,7 +54,7 @@ export default {
     async insertPost() {
       const userRecord = await getAuth().getUser(userId);
       const sendData = {
-      name: this.newContent, 
+      content: this.newContent, 
       userID: this.userID,
       };
       this.$emit('clicked');
