@@ -2,7 +2,7 @@
   <div class="sidenav">
     <img class="sidenav-img" src="../img/logo.png">
     <div class="sidenav-home">
-      <img class="sidenav-home-img" src="../img/home.png">
+      <img @click="home" class="sidenav-home-img" src="../img/home.png">
       <p class="sidenav-home-text">ホーム</p>
     </div>
     <div class="sidenav-logout">
@@ -24,17 +24,29 @@
 
 <script>
 import firebase from '~/plugins/firebase'
-import { getAuth } from "firebase/auth";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
+　created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        var uid = user.uid;
+      }
+    });
+  },
+
   data() {
     return {
       newContent:"",
-      userID:"",
+      uid:"",
       postLists: [],
     };
   },
+
   methods: {
+    home() {
+      this.$router.replace('/')
+    },
+
     logout() {
       firebase
       .auth()
@@ -45,17 +57,10 @@ export default {
       })
     },
 
-    async getPost() {
-      const resData = await this.$axios.get(
-      "http://127.0.0.1:8000/api/post/"
-      );
-      this.postLists = resData.data.data;
-    },
     async insertPost() {
-      const userRecord = await getAuth().getUser(userId);
       const sendData = {
       content: this.newContent, 
-      userID: this.userID,
+      uid: this.uid,
       };
       this.$emit('clicked');
       await this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);

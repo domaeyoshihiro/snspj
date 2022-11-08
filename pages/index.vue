@@ -43,7 +43,7 @@ export default {
       newContent: "",
       uid: "",
       postLists: [],
-      /*count: "",*/
+      /* count: "", */
     };
   },
 
