@@ -24,20 +24,12 @@
 
 <script>
 import firebase from '~/plugins/firebase'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
-　created() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        var uid = user.uid;
-      }
-    });
-  },
 
   data() {
     return {
       newContent:"",
-      uid:"",
+      firebaseid:"",
       postLists: [],
     };
   },
@@ -60,11 +52,10 @@ export default {
     async insertPost() {
       const sendData = {
       content: this.newContent, 
-      uid: this.uid,
+      firebaseid: data.user.uid,
       };
       this.$emit('clicked');
       await this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);
-      this.getContact();
     },
   },
 };
