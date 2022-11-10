@@ -49,16 +49,20 @@ export default {
       })
     },
 
-    async insertPost() {
-      const sendData = {
-      content: this.newContent, 
-      firebaseid: data.user.uid,
-      };
-      this.$emit('clicked');
-      await this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);
+    insertPost() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const sendData = {
+          content: this.newContent, 
+          firebaseid: user.uid,
+          };
+        this.$emit('clicked');
+        this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);
+        }
+      })
     },
   },
-};
+}
 </script>
 
 <style>
