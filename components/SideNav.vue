@@ -30,7 +30,6 @@ export default {
     return {
       newContent:"",
       firebaseid:"",
-      postLists: [],
     };
   },
 
