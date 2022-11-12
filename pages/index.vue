@@ -1,19 +1,18 @@
 <template>
   <div class="index-container">
-    <SideNav v-on:clicked/>
+    <SideNav />
     <div class="post">
       <h1 class="title">ホーム</h1>
       <div class="post-container">
-         <table class="post-container-table">
-          <tr v-for="item in postLists" :key="item.id" class="post-container-tr">
-            <th class="post-container-th">{{ item }}</th>
+         <table v-for="item in postLists.posts" :key="item.id" class="post-container-table">
+          <tr class="post-container-tr-upper">
+            <th class="post-container-th">{{ item.user.name }}</th>
             <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
             <th class="post-container-th">{{ count }}</th>
-            <th class="post-container-th"><img @click="deleteContent" class="delete-img" src="../img/cross.png"></th>
+            <th class="post-container-th"><img @click="deletePost" class="delete-img" src="../img/cross.png"></th>
             <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
-          </tr>
-          <tr v-for="item in postLists" :key="item.id">
-            <td>{{  }}</td>
+          <tr class="post-container-tr-bottom">
+            <td class="post-container-td">{{ item.content }}</td>
           </tr>
         </table>  
       </div>
@@ -59,7 +58,6 @@ export default {
     async getPost() {
       const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
       this.postLists = resData.data.data;
-      console.log(resData.data.data);
     },
 
     async deletePost(id) {
@@ -111,22 +109,31 @@ export default {
 }
 
 .heart-img {
-  width:20%;
+  width:15%;
 }
 
 .delete-img {
-  width: 20%;
+  width: 15%;
 }
 
 .detail-img {
-  width: 20%;
+  width: 15%;
 }
 
-.content {
-  color: white;
+.post-container-table {
+  width: 90%;
+  border: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .post-container-th {
+  font-size: 25px;
+  color: white;
+}
+
+.post-container-td {
   color: white;
 }
 </style>

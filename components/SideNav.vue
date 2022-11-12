@@ -55,7 +55,6 @@ export default {
           content: this.newContent, 
           firebaseid: user.uid,
           };
-        this.$emit('clicked');
         this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);
         }
       })
