@@ -51,12 +51,12 @@ export default {
   },
   */
 
-  methods: {
-    async getPost() {
-      const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
+  created() {
+      const resData = this.$axios.get("http://127.0.0.1:8000/api/post/");
       this.postLists = resData.data.data;    
     },
 
+  methods: {
     async deletePost(id) {
       await this.$axios.delete("http://127.0.0.1:8000/api/post/" + id);
       this.getContact();
