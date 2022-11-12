@@ -6,14 +6,14 @@
       <div class="post-container">
          <table class="post-container-table">
           <tr v-for="item in postLists" :key="item.id" class="post-container-tr">
-            <th class="post-container-th">{{ item.user.name }}</th>
+            <th class="post-container-th">{{  }}</th>
             <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
             <th class="post-container-th">{{ count }}</th>
             <th class="post-container-th"><img @click="deleteContent" class="delete-img" src="../img/cross.png"></th>
             <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
           </tr>
           <tr v-for="item in postLists" :key="item.id">
-            <td>{{ item.posts.content }}</td>
+            <td>{{  }}</td>
           </tr>
         </table>  
       </div>
@@ -58,12 +58,13 @@ export default {
   methods: {
     async getPost() {
       const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
-      this.postLists = resData.data.data;   
+      this.postLists = resData.data.data;
+      console.log(resData.data.data);
     },
 
     async deletePost(id) {
       await this.$axios.delete("http://127.0.0.1:8000/api/post/" + id);
-      this.getContact();
+      this.getPost();
       }, 
 
   /*
@@ -107,6 +108,18 @@ export default {
 
 .title {
   color: white;
+}
+
+.heart-img {
+  width:20%;
+}
+
+.delete-img {
+  width: 20%;
+}
+
+.detail-img {
+  width: 20%;
 }
 
 .content {
