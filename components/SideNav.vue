@@ -132,4 +132,10 @@ export default {
   margin-left: auto;
   margin-right: 30px;
 }
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-left: 30px;
+}
 </style>

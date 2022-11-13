@@ -9,7 +9,7 @@
             <th class="post-container-th">{{ item.user.name }}</th>
             <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
             <th class="post-container-th">{{ count }}</th>
-            <th class="post-container-th"><img @click="deletePost" class="delete-img" src="../img/cross.png"></th>
+            <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
             <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
           <tr class="post-container-tr-bottom">
             <td class="post-container-td">{{ item.content }}</td>
@@ -61,7 +61,7 @@ export default {
     },
 
     async deletePost(id) {
-      await this.$axios.post("http://127.0.0.1:8000/api/post/destroy" + id);
+      await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
       this.getPost();
       }, 
 
@@ -87,7 +87,7 @@ export default {
   */
 
     comment() {
-      this.$router.push("/posts/id");
+      this.$router.push("/posts/:id");
       },
     },
   };
