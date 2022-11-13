@@ -1,23 +1,27 @@
 <template>
   <div class="post-container">
-      <tr>
-        <th class="post-container-th">{{ aa }}</th>
-        <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
-        <th class="post-container-th">{{ bb }}</th>
-        <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
-        <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
-      </tr>
-      <tr>
-        <td class="post-container-td">{{ cc }}</td>
-      </tr> 
+  　　<table class="post-container-table">
+        <tr>
+          <th class="post-container-th">{{ item.user.name }}</th>
+          <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
+          <th class="post-container-th">{{ bb }}</th>
+          <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
+          <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
+        </tr>
+        <tr>
+          <td class="post-container-td">{{ cc }}</td>
+        </tr> 
+      </table>
   </div>
 </template>
 
 <script>
+
 import firebase from '~/plugins/firebase'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
-　created() {
+  props: ['item'],
+  created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.message = "ログイン済みです。";
