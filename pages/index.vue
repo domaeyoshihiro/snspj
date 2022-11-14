@@ -14,7 +14,6 @@
 
 <script>
 import firebase from '~/plugins/firebase'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
 　created() {
     firebase.auth().onAuthStateChanged((user) => {

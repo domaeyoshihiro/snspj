@@ -25,6 +25,19 @@
 <script>
 import firebase from '~/plugins/firebase'
 export default {
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.message = "ログイン済みです。";
+        var uid = user.uid;
+      }
+      else {
+        alert("ログインしてください。");
+        this.$router.replace("/login");
+      }
+    });
+  },
+
 
   data() {
     return {

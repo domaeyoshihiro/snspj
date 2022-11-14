@@ -4,21 +4,33 @@
         <tr>
           <th class="post-container-th">{{ item.user }}</th>
           <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
-          <th class="post-container-th">{{ bb }}</th>
+          <th class="post-container-th">{{  }}</th>
           <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
           <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
         </tr>
         <tr>
-          <td class="post-container-td">{{ cc }}</td>
+          <td class="post-container-td">{{  }}</td>
         </tr> 
       </table>
   </div>
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
 export default {
   props: ['item'],
   created() {
+    console.log(item);
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.message = "ログイン済みです。";
+        var uid = user.uid;
+      }
+      else {
+        alert("ログインしてください。");
+        this.$router.replace("/login");
+      }
+    });
     console.log(item);
   },
 
