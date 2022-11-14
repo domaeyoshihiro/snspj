@@ -43,6 +43,7 @@ export default {
     return {
       newContent:"",
       firebaseid:"",
+      data:"",
     };
   },
 
@@ -69,6 +70,7 @@ export default {
           firebaseid: user.uid,
           };
         this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);
+        this.$emit('insertData' ,this.data );
         }
       })
     },

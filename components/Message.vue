@@ -2,7 +2,7 @@
   <div class="post-container">
   　　<table class="post-container-table">
         <tr>
-          <th class="post-container-th">{{ item.user }}</th>
+          <th class="post-container-th">{{  }}</th>
           <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
           <th class="post-container-th">{{  }}</th>
           <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
@@ -19,8 +19,8 @@
 import firebase from '~/plugins/firebase'
 export default {
   props: ['item'],
+
   created() {
-    console.log(item);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.message = "ログイン済みです。";
@@ -31,7 +31,6 @@ export default {
         this.$router.replace("/login");
       }
     });
-    console.log(item);
   },
 
   data() {
@@ -47,19 +46,9 @@ export default {
   },
   */
 
-  created() {
-    this.getPost();
-  },
-
   methods: {
-    async getPost() {
-      const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
-      this.postLists = resData.data.data;
-    },
-
     async deletePost(id) {
       await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
-      this.getPost();
       }, 
 
   /*
