@@ -2,7 +2,7 @@
   <div class="post-container">
   　　<table class="post-container-table">
         <tr>
-          <th class="post-container-th">{{ item.user.name }}</th>
+          <th class="post-container-th">{{ item.user }}</th>
           <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
           <th class="post-container-th">{{ bb }}</th>
           <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
@@ -16,22 +16,10 @@
 </template>
 
 <script>
-
-import firebase from '~/plugins/firebase'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
   props: ['item'],
   created() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.message = "ログイン済みです。";
-        var uid = user.uid;
-      }
-      else {
-        alert("ログインしてください。");
-        this.$router.replace("/login");
-      }
-    });
+    console.log(item);
   },
 
   data() {
