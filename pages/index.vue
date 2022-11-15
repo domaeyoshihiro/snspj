@@ -1,6 +1,6 @@
 <template>
   <div class="index-container">
-    <SideNav @insertData="addPostLists" />
+    <SideNav @insertData="getPost" />
     <div class="post">
       <h1 class="title">ホーム</h1>
       <div class="post-container">
@@ -46,10 +46,6 @@ export default {
   },
 
   methods: {
-    addPostLists(data) {
-      this.postLists = data;
-    },
-
     async getPost() {
       const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
       this.postLists = resData.data.data;
