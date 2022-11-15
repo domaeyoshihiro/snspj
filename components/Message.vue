@@ -2,14 +2,14 @@
   <div class="post-container">
   　　<table class="post-container-table">
         <tr>
-          <th class="post-container-th">{{ item }}</th>
+          <th class="post-container-th">{{ item[0].user.name }}</th>
           <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
-          <th class="post-container-th">{{  }}</th>
+          <th class="post-container-th">{{ count }}</th>
           <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
           <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
         </tr>
         <tr>
-          <td class="post-container-td">{{  }}</td>
+          <td class="post-container-td">{{ item[0].content }}</td>
         </tr> 
       </table>
   </div>
