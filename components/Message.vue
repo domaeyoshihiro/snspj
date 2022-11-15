@@ -2,7 +2,7 @@
   <div class="post-container">
   　　<table class="post-container-table">
         <tr>
-          <th class="post-container-th">{{  }}</th>
+          <th class="post-container-th">{{ item }}</th>
           <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
           <th class="post-container-th">{{  }}</th>
           <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>

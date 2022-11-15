@@ -1,6 +1,6 @@
 <template>
   <div class="index-container">
-    <SideNav @insertData="getPost" />
+    <SideNav @insertData="reload" />
     <div class="post">
       <h1 class="title">ホーム</h1>
       <div class="post-container">
@@ -55,6 +55,10 @@ export default {
       await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
       this.getPost();
       }, 
+
+    reload() {
+    location.reload();
+    },
 
   /*
     async storeLike() {
