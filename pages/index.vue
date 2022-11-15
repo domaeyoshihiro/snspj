@@ -3,10 +3,8 @@
     <SideNav @insertData="reload" />
     <div class="post">
       <h1 class="title">ホーム</h1>
-      <div class="post-container">
-         
-        <Message v-for="item in postLists.posts" :key="item.id" :item="postLists.posts" />
-          
+      <div class="post-container">  
+        <Message v-for="item in postLists.posts" :key="item.id" :item="item" @deleteData="reload" />
       </div>
     </div>
   </div>
@@ -50,11 +48,6 @@ export default {
       const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/");
       this.postLists = resData.data.data;
     },
-
-    async deletePost(id) {
-      await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
-      this.getPost();
-      }, 
 
     reload() {
     location.reload();
@@ -100,36 +93,13 @@ export default {
 }
 
 .title {
+  font-size: 24px;
   color: white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 15px;
+  margin: 0px;
 }
 
-.heart-img {
-  width:15%;
-}
-
-.delete-img {
-  width: 15%;
-}
-
-.detail-img {
-  width: 15%;
-}
-
-.post-container-table {
-  width: 90%;
-  border: 1px solid white;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-}
-
-.post-container-th {
-  font-size: 25px;
-  color: white;
-}
-
-.post-container-td {
-  color: white;
-}
 </style>
 

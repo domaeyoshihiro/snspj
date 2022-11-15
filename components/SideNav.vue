@@ -14,7 +14,7 @@
       <validation-observer ref="obs" v-slot="ObserverProps">
         <validation-provider v-slot="{ errors }" rules="required|max:120">
           <div class="error">{{ errors[0] }}</div>
-          <textarea name="textarea" cols="30" rows="3" class="sidenav-share-textarea" v-model="newContent"></textarea>
+          <textarea name="textarea" cols="30" rows="7" class="sidenav-share-textarea" v-model="newContent"></textarea>
         </validation-provider>
         <button @click="insertPost" class="sidenav-share-btn" :disabled="ObserverProps.invalid || !ObserverProps.validated">シェアする</button>
       </validation-observer>
@@ -32,7 +32,6 @@ export default {
         var uid = user.uid;
       }
       else {
-        alert("ログインしてください。");
         this.$router.replace("/login");
       }
     });
@@ -85,8 +84,9 @@ export default {
 }
 
 .sidenav-img {
-  width: 40%;
-  margin: 20px;
+  width: 100px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
 
 .sidenav-home {
@@ -94,8 +94,9 @@ export default {
 }
 
 .sidenav-home-img {
-  width: 10%;
-  margin: 20px;
+  width: 25px;
+  height: 25px;
+  margin: 15px 20px 0;
 }
 
 .sidenav-home-text {
@@ -107,12 +108,14 @@ export default {
 }
 
 .sidenav-logout-img {
-  width: 10%;
-  margin: 20px;
+  width: 25px;
+  height: 25px;
+  margin: 0px 20px 0;
 }
 
 .sidenav-logout-text {
   color: white;
+  margin-top: 0px;
 }
 
 .sidenav-share {
@@ -144,7 +147,7 @@ export default {
   padding: 8px 20px;
   cursor: pointer;
   margin-left: auto;
-  margin-right: 30px;
+  margin-right: 40px;
 }
 
 .error {

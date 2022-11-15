@@ -1,17 +1,15 @@
 <template>
   <div class="post-container">
-  　　<table class="post-container-table">
-        <tr>
-          <th class="post-container-th">{{ item[0].user.name }}</th>
-          <th class="post-container-th"><img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png"></th>
-          <th class="post-container-th">{{ count }}</th>
-          <th class="post-container-th"><img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png"></th>
-          <th class="post-container-th"><img @click="comment" class="detail-img" src="../img/detail.png"></th>
-        </tr>
-        <tr>
-          <td class="post-container-td">{{ item[0].content }}</td>
-        </tr> 
-      </table>
+  　　<div class="post-container-wrapper">
+        <div class="post-container-upper">
+          <p class="post-container-name">{{ item.user.name }}</p>
+          <img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png">
+          {{ count }}
+          <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
+          <img @click="moveComment" class="detail-img" src="../img/detail.png">
+        </div>
+          <p class="post-container-content">{{ item.content }}</p>
+      </div>
   </div>
 </template>
 
@@ -27,7 +25,6 @@ export default {
         var uid = user.uid;
       }
       else {
-        alert("ログインしてください。");
         this.$router.replace("/login");
       }
     });
@@ -36,22 +33,20 @@ export default {
   data() {
     return {
       postLists: [],
-      /*count: "",*/
+      count: "",
     };
   },
 
-  /*
   mounted () {
     this.countLike();
   },
-  */
 
   methods: {
     async deletePost(id) {
       await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
-      }, 
+      this.$emit('deleteData');
+    }, 
 
-  /*
     async storeLike() {
       await this.$axios.post("http://127.0.0.1:8000/api/like/")
       .then(res => {
@@ -70,9 +65,8 @@ export default {
         this.count = res.data;
       });
     },
-  */
 
-    comment() {
+    moveComment() {
       this.$router.push("/posts/:id");
       },
     },
@@ -81,31 +75,46 @@ export default {
 
 <style>
 .heart-img {
-  width:15%;
+  width: 30px;
+  height: 30px;
+  padding-right: 30px;
+  padding-left: 20px;
 }
 
 .delete-img {
-  width: 15%;
+  width: 30px;
+  height: 30px;
+  padding-right: 50px;
 }
 
 .detail-img {
-  width: 15%;
+  width: 30px;
+  height: 30px;
 }
 
-.post-container-table {
-  width: 90%;
-  border: 1px solid white;
+.post-container-wrapper {
+  width: 100%;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
   padding-top: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
-.post-container-th {
-  font-size: 25px;
-  color: white;
+.post-container-upper {
+  display: flex;
+  margin: 0 20px;
 }
 
-.post-container-td {
+.post-container-name {
+  font-size: 18px;
+  font-weight: bold;
   color: white;
+  margin: 0;
+}
+
+.post-container-content {
+  font-size: 14px;
+  color: white;
+  margin: 15px;
 }
 </style>

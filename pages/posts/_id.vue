@@ -12,7 +12,6 @@
 
 <script>
 import firebase from '~/plugins/firebase'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
 　created() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -21,7 +20,6 @@ export default {
         var uid = user.uid;
       }
       else {
-        alert("ログインしてください。");
         this.$router.replace("/login");
       }
     });
@@ -31,17 +29,5 @@ export default {
 
 
 <style>
-.index-container {
-  display: flex;
-}
 
-.post {
-  width: 70vw;
-  height: 100vh;
-  background-color: #000033;
-}
-
-.title {
-  color: white;
-}
 </style>
