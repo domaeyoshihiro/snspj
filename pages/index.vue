@@ -4,7 +4,7 @@
     <div class="post">
       <h1 class="title">ホーム</h1>
       <div class="post-container">  
-        <Message v-for="item in postLists.posts" :key="item.id" :item="item" @deleteData="reload" />
+        <Message v-for="item in postLists.posts" :key="item.id" :item="item" @deleteData="reload" @storeLike="storeLike" @deleteLike="deleteLike" />
       </div>
     </div>
   </div>
@@ -29,15 +29,8 @@ export default {
   data() {
     return {
       postLists: [],
-      /*count: "",*/
     };
   },
-
-  /*
-  mounted () {
-    this.countLike();
-  },
-  */
 
   created() {
     this.getPost();
@@ -53,7 +46,6 @@ export default {
     location.reload();
     },
 
-  /*
     async storeLike() {
       await this.$axios.post("http://127.0.0.1:8000/api/like/")
       .then(res => {
@@ -66,13 +58,6 @@ export default {
         this.count = res.data.count;
       });
     },
-    async countLike() {
-      await this.$axios.post("http://127.0.0.1:8000/api/like/")
-      .then(res => {
-        this.count = res.data;
-      });
-    },
-  */
 
     comment() {
       this.$router.push("/posts/:id");

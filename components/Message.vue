@@ -3,7 +3,7 @@
   　　<div class="post-container-wrapper">
         <div class="post-container-upper">
           <p class="post-container-name">{{ item.user.name }}</p>
-          <img @click="storeLike(); destroyLike()" class="heart-img" src="../img/heart.png">
+            <img @click="onLikeClick" class="heart-img" src="../img/heart.png">
           {{ count }}
           <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
           <img @click="moveComment" class="detail-img" src="../img/detail.png">
@@ -37,33 +37,19 @@ export default {
     };
   },
 
-  mounted () {
-    this.countLike();
-  },
-
   methods: {
     async deletePost(id) {
       await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
       this.$emit('deleteData');
     }, 
 
-    async storeLike() {
-      await this.$axios.post("http://127.0.0.1:8000/api/like/")
-      .then(res => {
-        this.count = res.data.count;
-      });
-    },
-    async destroyLike() {
-      await this.$axios.post("http://127.0.0.1:8000/api/like/")
-      .then(res => {
-        this.count = res.data.count;
-      });
-    },
-    async countLike() {
-      await this.$axios.post("http://127.0.0.1:8000/api/like/")
-      .then(res => {
-        this.count = res.data;
-      });
+    onLikeClick() {
+      if(Post::user_id() = Like::user_id()) {
+        this.$emit('deleteLike');
+      }
+      else {
+        this.$emit('storeLike');
+      }
     },
 
     moveComment() {
