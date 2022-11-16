@@ -44,7 +44,7 @@ export default {
     }, 
 
     onLikeClick() {
-      if(this.item !== -1) {
+      if(id == this.item.likes.user_id) {
         this.$emit('deleteLike');
       }
       else {
