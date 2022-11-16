@@ -29,6 +29,8 @@ export default {
   data() {
     return {
       postLists: [],
+      post_id: "",
+      user_id: "",
     };
   },
 
@@ -47,16 +49,14 @@ export default {
     },
 
     async storeLike() {
+      const sendData = {
+          post_id: post_id, 
+          user_id: user_id,
+          };
       await this.$axios.post("http://127.0.0.1:8000/api/like/")
-      .then(res => {
-        this.count = res.data.count;
-      });
     },
     async destroyLike() {
-      await this.$axios.post("http://127.0.0.1:8000/api/like/")
-      .then(res => {
-        this.count = res.data.count;
-      });
+      await this.$axios.post("http://127.0.0.1:8000/api/like/"+id)
     },
 
     comment() {
