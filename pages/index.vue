@@ -52,8 +52,8 @@ export default {
       const sendData = {
         post_id: this.post_id, 
         user_id: this.user_id,
-        };
-      await this.$axios.post("http://127.0.0.1:8000/api/like/")
+      };
+      await this.$axios.post("http://127.0.0.1:8000/api/like/", sendData)
     },
     async destroyLike() {
       await this.$axios.post("http://127.0.0.1:8000/api/like/"+id)
