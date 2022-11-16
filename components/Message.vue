@@ -2,7 +2,7 @@
   <div class="post-container">
   　　<div class="post-container-wrapper">
         <div class="post-container-upper">
-          <p class="post-container-name">{{ item.user.name }}</p>
+          <p class="post-container-name">{{ item }}</p>
             <img @click="onLikeClick" class="heart-img" src="../img/heart.png">
           {{ count }}
           <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
@@ -44,11 +44,11 @@ export default {
     }, 
 
     onLikeClick() {
-      if(Post::user_id() = Like::user_id()) {
+      if(this.item !== -1) {
         this.$emit('deleteLike');
       }
       else {
-        this.$emit('storeLike');
+        this.$emit('storeLike', item);
       }
     },
 
