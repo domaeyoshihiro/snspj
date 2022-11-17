@@ -35,7 +35,7 @@ export const actions = {
         };
         const resData = await axios.get("http://127.0.0.1:8000/api/user/", sendData)
         console.log(resData);
-        commit('getData', { id: resData.data.user.id, name: resData.name, firebaseid: resData.firebaseid, email: resData.email })
+        commit('getData', { id: resData.data.user.id, name: resData.data.name, firebaseid: resData.data.firebaseid, email: resData.data.email })
       }
     })
   },
