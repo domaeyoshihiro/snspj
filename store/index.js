@@ -27,7 +27,7 @@ export const actions = {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         const sendData = {
-          firebaseid: data.user.uid,
+          firebaseid: user.uid,
         };
         this.$axios.get("http://127.0.0.1:8000/api/user/", sendData)
         commit('getData',{ id:user.id, name:user.name, email:user.email, passeord:user.password})
