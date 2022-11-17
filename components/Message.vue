@@ -2,9 +2,9 @@
   <div class="post-container">
   　　<div class="post-container-wrapper">
         <div class="post-container-upper">
-          <p class="post-container-name">{{ item }}</p>
+          <p class="post-container-name">{{ item.user.name }}</p>
             <img @click="onLikeClick" class="heart-img" src="../img/heart.png">
-          {{ count }}
+          {{  }}
           <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
           <img @click="moveComment" class="detail-img" src="../img/detail.png">
         </div>
@@ -22,7 +22,7 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.message = "ログイン済みです。";
-        var firebaseid = user.uid;
+        var uid = user.uid;
       }
       else {
         this.$router.replace("/login");
@@ -44,7 +44,7 @@ export default {
     }, 
 
     onLikeClick() {
-      if(this.firebaseid == this.item.likes.user.firebaseid) {
+      if(this.$store.state.user.id == this.item.likes.user.id) {
         this.$emit('deleteLike');
       }
       else {
