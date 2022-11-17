@@ -28,13 +28,14 @@ export const actions = {
       })
   },
   checkLogin({ commit }) {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged( async function (user) {
       if (user) {
         const sendData = {
           firebaseid: user.uid,
         };
-        this.$axios.get("http://127.0.0.1:8000/api/user/", sendData)
-        commit('getData', { id: user.id, name: user.name, firebaseid: user.firebaseid, email:user.email})
+        const resData = await axios.get("http://127.0.0.1:8000/api/user/", sendData)
+        console.log(resData);
+        commit('getData', { id: resData.data.user.id, name: resData.name, firebaseid: resData.firebaseid, email: resData.email })
       }
     })
   },
