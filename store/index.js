@@ -1,8 +1,9 @@
 export const state = () => ({
   user: {
-    uid: '',
-    email: '',
+    id: '',
     name: '',
+    email: '',
+    password: '',
   },
 })
 
@@ -16,7 +17,7 @@ export const actions = {
   login({ dispatch }, payload) {
     firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
       .then(user => {
-        console.log('成功！')
+        alert('ログインが完了しました')
         dispatch('checkLogin')
       }).catch((error) => {
         alert(error)
@@ -25,8 +26,7 @@ export const actions = {
   checkLogin({ commit }) {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        console.log(user)
-        commit('getData', { uid: user.uid, email: user.email, name: user.displayName })
+        commit('getData', { id: user.id, email: user.email, name: user.name, name: user.password })
       }
     })
   },
