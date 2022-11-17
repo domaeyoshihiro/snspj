@@ -1,9 +1,8 @@
 export const state = () => ({
   user: {
-    id: '',
-    name: '',
+    uid: '',
     email: '',
-    password: '',
+    name: '',
   },
 })
 
@@ -13,17 +12,27 @@ export const getters = {
   }
 }
 
-export const mutations = {
+export const actions = {
+  login({ dispatch }, payload) {
+    firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+      .then(user => {
+        console.log('成功！')
+        dispatch('checkLogin')
+      }).catch((error) => {
+        alert(error)
+      })
+  },
   checkLogin({ commit }) {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        commit('getData', { id: user.id, name: user.name, email: user.email, password: user.password,  })
+        console.log(user)
+        commit('getData', { uid: user.uid, email: user.email, name: user.displayName })
       }
     })
   },
 }
 
-export const actions = {
+export const mutations = {
   getData(state, user) {
     state.user = user
   },
