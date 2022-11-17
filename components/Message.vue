@@ -22,7 +22,7 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.message = "ログイン済みです。";
-        var uid = user.uid;
+        var firebaseid = user.uid;
       }
       else {
         this.$router.replace("/login");
@@ -44,7 +44,7 @@ export default {
     }, 
 
     onLikeClick() {
-      if(id == this.item.likes.user.id) {
+      if(this.firebaseid == this.item.likes.user.firebaseid) {
         this.$emit('deleteLike');
       }
       else {
