@@ -49,7 +49,7 @@ export default {
     async storeLike() {
       const sendData = {
         post_id: this.item.id, 
-        user_id: this.item.likes.user_id,
+        user_id: this.item.likes.user.id,
       };
       await this.$axios.post("http://127.0.0.1:8000/api/like/", sendData)
     },

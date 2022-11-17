@@ -54,9 +54,13 @@ export default {
               break
           }
         })
+      },
     },
-  },
-}
+    async authSuccessful (response) {
+      await this.$auth.login(response)
+      console.log(this.$store.state.current.user)
+    },
+  }
 </script>
 
 <style>
