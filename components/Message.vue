@@ -3,8 +3,8 @@
   　　<div class="post-container-wrapper">
         <div class="post-container-upper">
           <p class="post-container-name">{{ item.user.name }}</p>
-            <img @click="onLikeClick(); getCount" class="heart-img" src="../img/heart.png">
-          {{ count }}
+            <img @click="onLikeClick(); getCount()" class="heart-img" src="../img/heart.png">
+          <p class="post-container-count">{{ count }}</p>
           <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
           <img @click="moveComment" class="detail-img" src="../img/detail.png">
         </div>
@@ -56,13 +56,8 @@ export default {
     },
 
     async getCount() {
-      const sendData = {
-          post_id: this.item.id,
-        };
-        const resData = await axios.get("http://127.0.0.1:8000/api/like/count", { params: sendData })
-        console.log(resData);
-        this.count = resData.data.data;
-      },
+      this.$emit('getCount', this.item);
+    },
 
     moveComment() {
       this.$router.push("/posts/:id");
@@ -108,6 +103,10 @@ export default {
   font-weight: bold;
   color: white;
   margin: 0;
+}
+
+.post-container-count {
+  color: white;
 }
 
 .post-container-content {

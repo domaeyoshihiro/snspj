@@ -1,5 +1,5 @@
-import firebase from '~/plugins/firebase'
-import axios from 'axios'
+import firebase from '~/plugins/firebase';
+import axios from 'axios';
 
 export const state = () => ({
   user: {
@@ -49,4 +49,4 @@ export const mutations = {
   getData(state, user) {
     state.user = user
   },
-}
+};
