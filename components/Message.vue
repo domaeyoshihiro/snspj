@@ -3,7 +3,7 @@
   　　<div class="post-container-wrapper">
         <div class="post-container-upper">
           <p class="post-container-name">{{ item.user.name }}</p>
-            <img @click="onLikeClick" class="heart-img" src="../img/heart.png">
+            <img @click="onLikeClick(); getCount" class="heart-img" src="../img/heart.png">
           {{  }}
           <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
           <img @click="moveComment" class="detail-img" src="../img/detail.png">
@@ -44,12 +44,19 @@ export default {
     }, 
 
     onLikeClick() {
-      if(this.$store.state.user.id == this.item.likes.user.id) {
+      this.item.likes.map((item2) => {
+        return item2.user.id
+      })
+      if(this.item2.user.id.includes(this.$store.state.user.id)) {
         this.$emit('deleteLike');
       }
       else {
-        this.$emit('storeLike', item);
+        this.$emit('storeLike', this.item);
       }
+    },
+
+    getCount() {
+      
     },
 
     moveComment() {
