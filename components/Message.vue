@@ -44,10 +44,10 @@ export default {
     }, 
 
     onLikeClick() {
-      this.item.likes.map((item2) => {
-        return item2.user.id
+      const item2 = this.item.likes.map((array) => {
+        return array.user.id
       })
-      if(this.item2.user.id.includes(this.$store.state.user.id)) {
+      if(item2.includes(this.$store.state.user.id)) {
         this.$emit('deleteLike');
       }
       else {
