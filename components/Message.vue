@@ -4,7 +4,7 @@
         <div class="post-container-upper">
           <p class="post-container-name">{{ item.user.name }}</p>
             <img @click="onLikeClick(); getCount" class="heart-img" src="../img/heart.png">
-          {{  }}
+          {{ count }}
           <img @click="deletePost(item.id)" class="delete-img" src="../img/cross.png">
           <img @click="moveComment" class="detail-img" src="../img/detail.png">
         </div>
@@ -48,16 +48,21 @@ export default {
         return array.user.id
       })
       if(item2.includes(this.$store.state.user.id)) {
-        this.$emit('deleteLike');
+        this.$emit('deleteLike', this.item);
       }
       else {
         this.$emit('storeLike', this.item);
       }
     },
 
-    getCount() {
-      
-    },
+    async getCount() {
+      const sendData = {
+          post_id: this.item.id,
+        };
+        const resData = await axios.get("http://127.0.0.1:8000/api/like/count", { params: sendData })
+        console.log(resData);
+        this.count = resData.data.data;
+      },
 
     moveComment() {
       this.$router.push("/posts/:id");

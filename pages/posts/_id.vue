@@ -29,5 +29,22 @@ export default {
 
 
 <style>
+.index-container {
+  display: flex;
+}
 
+.post {
+  width: 70vw;
+  height: 100vh;
+  background-color: #000033;
+}
+
+.title {
+  font-size: 24px;
+  color: white;
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 15px;
+  margin: 0px;
+}
 </style>
