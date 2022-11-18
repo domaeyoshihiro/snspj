@@ -66,8 +66,9 @@ export default {
           content: this.newContent, 
           firebaseid: user.uid,
           };
-        this.$axios.post("http://127.0.0.1:8000/api/post/", sendData);
-        this.$emit('insertData');
+        this.$axios.post("http://127.0.0.1:8000/api/post/", sendData).then( res => {
+        location.reload();
+        })
         }
       })
     },

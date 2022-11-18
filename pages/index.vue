@@ -1,6 +1,6 @@
 <template>
   <div class="index-container">
-    <SideNav @insertData="reload" />
+    <SideNav />
     <div class="post">
       <h1 class="title">ホーム</h1>
       <div class="post-container">  
@@ -52,13 +52,13 @@ export default {
         post_id: item.id, 
         user_id: this.$store.state.user.id,
       };
-   　　　this.$axios.post("http://127.0.0.1:8000/api/like/", sendData).then( res => {
-          location.reload();
+   　　this.$axios.post("http://127.0.0.1:8000/api/like/", sendData).then( res => {
+        location.reload();
       })
     },
     deleteLike(id) {
-      this.$axios.post("http://127.0.0.1:8000/api/like/" +id).then( res => {
-          location.reload();
+      this.$axios.post("http://127.0.0.1:8000/api/like/destroy/" +id).then( res => {
+        location.reload();
       })
     },
 
