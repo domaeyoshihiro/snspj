@@ -41,15 +41,20 @@ export default {
 
   methods: {
     async deletePost(id) {
-      await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
-      this.$emit('deleteData');
-    }, 
-
-    onLikeClick() {
-      const item2 = this.item.likes.map((array) => {
+      const item2 = this.item.map((array) => {
         return array.user.id
       })
       if(item2.includes(this.$store.state.user.id)) {
+        await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
+      this.$emit('deleteData');
+      }
+    }, 
+
+    onLikeClick() {
+      const item3 = this.item.likes.map((array) => {
+        return array.user.id
+      })
+      if(item3.includes(this.$store.state.user.id)) {
         this.$emit('deleteLike', this.item);
       }
       else {
@@ -62,7 +67,6 @@ export default {
           post_id: this.item.id,
         };
         const resData = await this.$axios.get("http://127.0.0.1:8000/api/like/count/", { params: sendData })
-        console.log(resData);
         this.count = resData.data.data.likes;
     },
 
