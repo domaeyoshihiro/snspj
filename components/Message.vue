@@ -28,6 +28,8 @@ export default {
         this.$router.replace("/login");
       }
     });
+
+    this.getCount();
   },
 
   data() {
@@ -63,6 +65,7 @@ export default {
         console.log(resData);
         this.count = resData.data.data.likes;
     },
+
 
     moveComment() {
       this.$router.push("/posts/:id");
