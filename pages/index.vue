@@ -56,10 +56,11 @@ export default {
       })
     },
     deleteLike(item) {
-      const likeid = item.likes.map((array) => {
-        return array.id
-      })
-      this.$axios.post("http://127.0.0.1:8000/api/like/destroy/" +likeid).then( res => {
+      const sendData = {
+        post_id: item.id, 
+        user_id: this.$store.state.user.id,
+      };
+   　　this.$axios.post("http://127.0.0.1:8000/api/like/destroy/", sendData).then( res => {
         location.reload();
       })
     },
