@@ -54,7 +54,7 @@ export default {
       };
    　　this.$axios.post("http://127.0.0.1:8000/api/like/", sendData).then( res => {
         location.reload();
-      });
+      })
     },
     deleteLike(item) {
       const likeid = item.likes.map((array) => {
@@ -70,7 +70,6 @@ export default {
           post_id: item.id,
         };
         const resData = await this.$axios.get("http://127.0.0.1:8000/api/like/count/", { params: sendData })
-        console.log(resData);
         this.count = resData.data.data.likes;
       },
 
