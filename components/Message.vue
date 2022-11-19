@@ -18,7 +18,7 @@ import firebase from '~/plugins/firebase'
 export default {
   props:{
     item: {
-      type: Array,
+      type: Object,
       default: () => [],
     },
     count: {
