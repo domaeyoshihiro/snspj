@@ -16,7 +16,17 @@
 <script>
 import firebase from '~/plugins/firebase'
 export default {
-  props: ['item'],
+  props:{
+    item: {
+      type: Array,
+      default: () => [],
+    },
+    count: {
+      type: Number,
+      default: 0,
+    }
+  } ,
+  
 
   created() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -70,7 +80,7 @@ export default {
 .heart-img {
   width: 30px;
   height: 30px;
-  padding-right: 30px;
+  padding-right: 0px;
   padding-left: 20px;
 }
 
@@ -107,6 +117,10 @@ export default {
 
 .post-container-count {
   color: white;
+  margin: 0;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 20px;
 }
 
 .post-container-content {
