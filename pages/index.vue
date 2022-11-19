@@ -4,7 +4,7 @@
     <div class="post">
       <h1 class="title">ホーム</h1>
       <div class="post-container">  
-        <Message v-for="item in postLists.posts" :key="item.id" :item="item" @deleteData="reload" @storeLike="storeLike($event)" @deleteLike="deleteLike($event)" @getCount="getCount($event)" />
+        <Message v-for="item in postLists.posts" :key="item.id" :item="item"　@deleteData="reload" @storeLike="storeLike($event)" @deleteLike="deleteLike($event)" />
       </div>
     </div>
   </div>
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       postLists: [],
-      count:"",
     };
   },
 
@@ -52,9 +51,7 @@ export default {
         post_id: item.id, 
         user_id: this.$store.state.user.id,
       };
-   　　this.$axios.post("http://127.0.0.1:8000/api/like/", sendData).then( res => {
-        location.reload();
-      })
+   　　this.$axios.post("http://127.0.0.1:8000/api/like/", sendData)
     },
     deleteLike(item) {
       const likeid = item.likes.map((array) => {
@@ -64,14 +61,6 @@ export default {
         location.reload();
       })
     },
-
-    async getCount(item) {
-      const sendData = {
-          post_id: item.id,
-        };
-        const resData = await this.$axios.get("http://127.0.0.1:8000/api/like/count/", { params: sendData })
-        this.count = resData.data.data.likes;
-      },
 
     comment() {
       this.$router.push("/posts/:id");

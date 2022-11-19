@@ -16,17 +16,7 @@
 <script>
 import firebase from '~/plugins/firebase'
 export default {
-  props:{
-    item: {
-      type: Object,
-      default: () => [],
-    },
-    count: {
-      type: Number,
-      default: 0,
-    }
-  } ,
-  
+  props:['item'],
 
   created() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -43,7 +33,7 @@ export default {
   data() {
     return {
       postLists: [],
- 
+      count: 0,
     };
   },
 
@@ -66,7 +56,12 @@ export default {
     },
 
     async getCount() {
-      this.$emit('getCount', this.item);
+      const sendData = {
+          post_id: this.item.id,
+        };
+        const resData = await this.$axios.get("http://127.0.0.1:8000/api/like/count/", { params: sendData })
+        console.log(resData);
+        this.count = resData.data.data.likes;
     },
 
     moveComment() {
