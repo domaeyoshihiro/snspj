@@ -41,20 +41,20 @@ export default {
 
   methods: {
     async deletePost(id) {
-      const item2 = this.item.map((array) => {
-        return array.user.id
-      })
-      if(item2.includes(this.$store.state.user.id)) {
+      if(this.item.user.id==this.$store.state.user.id) {
         await this.$axios.post("http://127.0.0.1:8000/api/post/destroy/" +id);
       this.$emit('deleteData');
+      }
+      else {
+        alert("他ユーザーの投稿は削除できません")
       }
     }, 
 
     onLikeClick() {
-      const item3 = this.item.likes.map((array) => {
+      const item2 = this.item.likes.map((array) => {
         return array.user.id
       })
-      if(item3.includes(this.$store.state.user.id)) {
+      if(item2.includes(this.$store.state.user.id)) {
         this.$emit('deleteLike', this.item);
       }
       else {
