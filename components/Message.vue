@@ -73,6 +73,7 @@ export default {
 
     moveComment() {
       this.$router.push("/posts/"+ this.item.id);
+      this.$emit('getPost', this.item);
       },
     },
   };
