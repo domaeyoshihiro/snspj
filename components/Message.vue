@@ -72,7 +72,7 @@ export default {
 
 
     moveComment() {
-      this.$router.push("/posts/:id");
+      this.$router.push("/posts/"+ this.item.id);
       },
     },
   };

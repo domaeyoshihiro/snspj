@@ -4,7 +4,7 @@
     <div class="post">
       <h1 class="title">コメント</h1>
       <div class="post-container">
-          
+        <Message v-for="item in postLists.posts" :key="item.id" :item="item"　@deleteData="reload" @storeLike="storeLike($event)" @deleteLike="deleteLike($event)" />  
       </div>
     </div>
   </div>
@@ -24,6 +24,23 @@ export default {
       }
     });
   },
+
+  data() {
+    return {
+      postLists: [],
+    };
+  },
+
+  created() {
+    this.getPost();
+  },
+
+  methods: {
+    async getPost() {
+      const resData = await this.$axios.get("http://127.0.0.1:8000/api/post/" + this.$route.params.id);
+      console.log(resData);
+      this.postLists = resData.data.data;
+    },
 
 <script>
 

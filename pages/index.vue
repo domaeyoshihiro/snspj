@@ -64,12 +64,8 @@ export default {
         location.reload();
       })
     },
-
-    comment() {
-      this.$router.push("/posts/:id");
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style>
