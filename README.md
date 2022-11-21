@@ -10,7 +10,7 @@ Laravel・Nuxtの理解を深めるために作成
 
 ## 他のリポジトリ
 - バックエンド
-- https://github.com/domaeyoshihiro/snspj-backend.git
+https://github.com/domaeyoshihiro/snspj-backend.git
 
 ## 機能一覧
 - 投稿追加
