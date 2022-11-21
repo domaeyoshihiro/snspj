@@ -69,8 +69,6 @@ export default {
         const resData = await this.$axios.get("http://127.0.0.1:8000/api/like/count/", { params: sendData })
         this.count = resData.data.data.likes;
     },
-
-
     moveComment() {
       this.$router.push("/posts/"+ this.item.id);
       this.$emit('getPost', this.item);
