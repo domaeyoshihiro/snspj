@@ -142,7 +142,7 @@ export default {
   font-weight: bold;
   color: #FFFFFF;
   background-color: #00008B;
-  border: 1px solid #D3D3D3;
+  border: 1px solid #00008B;
   border-radius: 30px;
   padding: 8px 20px;
   cursor: pointer;
