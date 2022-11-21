@@ -46,15 +46,17 @@ export default {
 }
 
 .login-title {
-  font-size: 20px;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .login-input {
+  font-size: 12px;
   width: 80%;
   height: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   border: 1px solid #D3D3D3;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .login-btn {

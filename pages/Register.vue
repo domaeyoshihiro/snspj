@@ -77,6 +77,7 @@ export default {
   background-color: #000033;
   height: 100vh;
 }
+
 .register-content {
   display: block;
   text-align: center;
@@ -88,15 +89,17 @@ export default {
 }
 
 .register-title {
-  font-size: 20px;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .register-input {
+  font-size: 12px;
   width: 80%;
   height: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   border: 1px solid #D3D3D3;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .register-btn {

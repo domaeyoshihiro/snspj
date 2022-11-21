@@ -96,7 +96,7 @@ export default {
 .sidenav-home-img {
   width: 25px;
   height: 25px;
-  margin: 15px 20px 0;
+  margin:0 20px 10px;
 }
 
 .sidenav-home-text {
@@ -110,7 +110,7 @@ export default {
 .sidenav-logout-img {
   width: 25px;
   height: 25px;
-  margin: 0px 20px 0;
+  margin: 0px 20px 30px;
 }
 
 .sidenav-logout-text {
@@ -127,6 +127,7 @@ export default {
 }
 
 .sidenav-share-textarea {
+  font-size: 14px;
   width: 80%;
   color: white;
   background-color: #000033;

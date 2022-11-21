@@ -81,14 +81,13 @@ export default {
 
 <style>
 .heart-img {
-  width: 30px;
+  width: 50px;
   height: 30px;
   padding-right: 0px;
   padding-left: 20px;
 }
 
 .delete-img {
-  width: 30px;
   height: 30px;
   padding-right: 50px;
 }
@@ -120,7 +119,6 @@ export default {
 
 .post-container-count {
   color: white;
-  margin: 0;
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 20px;
@@ -129,6 +127,6 @@ export default {
 .post-container-content {
   font-size: 14px;
   color: white;
-  margin: 15px;
+  margin: 10px 20px;
 }
 </style>

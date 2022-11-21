@@ -117,7 +117,7 @@ export default {
 }
 
 .title {
-  font-size: 24px;
+  font-size: 22px;
   color: white;
   border-left: 1px solid white;
   border-bottom: 1px solid white;
@@ -126,13 +126,13 @@ export default {
 }
 
 .comment-title {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: lighter;
   color: white;
   text-align: center;
   border-left: 1px solid white;
   border-bottom: 1px solid white;
-  padding: 15px;
-  margin: 0px;
+  padding: 10px 0;
 }
 
 .comment-list {
@@ -141,6 +141,7 @@ export default {
 }
 
 .comment-user {
+  font-size: 16px;
   color: white;
   padding-top: 10px;
   padding-left: 15px;
@@ -148,6 +149,7 @@ export default {
 }
 
 .comment-comment {
+  font-size: 14px;
   color: white;
   padding: 10px 15px;
   margin: 0px;
@@ -158,12 +160,13 @@ export default {
 }
 
 .comment-input {
+  font-size: 14px;
   width: 95%;
   color: white;
   background-color: #000033;
   border: 1px solid #D3D3D3;
   border-radius: 10px;
-  padding: 8px 0;
+  padding: 3px 0;
   margin-top: 20px;
   margin-bottom: 20px;
   resize: none;
