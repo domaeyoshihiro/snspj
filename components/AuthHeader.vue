@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <img class="header-logo" src="../img/logo.png">
-    <p class="message">{{ message }}</p>
     <div class="header-nav">
       <NuxtLink class="header-link" to="/register">新規登録</NuxtLink>
       <NuxtLink class="header-link" to="/login">ログイン</NuxtLink>
